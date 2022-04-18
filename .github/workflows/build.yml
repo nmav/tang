@@ -12,11 +12,11 @@ jobs:
         os:
           - fedora:latest
           - centos:7
-          - centos:8
+          - quay.io/centos/centos:stream8
           - debian:testing
           - debian:latest
           - ubuntu:rolling
-          - ubuntu:bionic
+          - ubuntu:focal
         stable: [true]
         include:
           - os: fedora:rawhide
