@@ -4,7 +4,7 @@
 #
 
 # Should probably in the future allow running as non-root
-# and enable multiple interfaces in some cleaner way.
+# and enable multiple interfaces in some way in the future.
 
 # PROVIDE: tangd
 # REQUIRE: NETWORKING DAEMON
@@ -14,7 +14,6 @@
 name="tangd"
 desc="Network Presence Binding Daemon (tang)"
 rcvar="tangd_enable"
-command="@libexecdir@/${name}"
 
 load_rc_config $name
 : ${tangd_enable:=no}
@@ -22,10 +21,9 @@ load_rc_config $name
 : ${tangd_jwkdir="@jwkdir@"}
 : ${tangd_logfile="/var/log/tang"}
 
-pidfile="/var/run/${name}.pid"
-required_files="@libexecdir@/${name}"
 required_dirs="${tangd_jwkdir}"
 
-command_args="-p ${tangd_port} -l ${tangd_jwkdir} 2>> ${tangd_logfile}"
+command="@libexecdir@/${name}"
+command_args="-p ${tangd_port} -l ${tangd_jwkdir} 2>> ${tangd_logfile} &"
 
 run_rc_command "$1"
