@@ -27,6 +27,10 @@
 #include <sys/select.h>
 #include <errno.h>
 #include <sys/wait.h>
+#if defined(__FreeBSD__)
+#include <netinet/in.h>
+#include <signal.h>
+#endif
 
 #include "socket.h"
 
