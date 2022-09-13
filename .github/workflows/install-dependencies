@@ -17,7 +17,7 @@ fedora:*)
                    systemd gcovr curl socat iproute
     ;;
 
-*centos:*)
+centos:*)
     yum -y clean all
     yum -y --setopt=deltarpm=0 update
     yum install -y yum-utils epel-release
